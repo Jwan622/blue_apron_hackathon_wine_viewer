@@ -34,7 +34,7 @@ namespace :db do
         Geocoder.configure(lookup: :google, api_key: "AIzaSyAOM0HeN0_Ue30RgDH9JTZcu-9IIthP64M", use_https: true)
         Geocoder.coordinates(wine.region)
       end
-      wine.update_attributes(latitude: coordinates[0], longitude: coordinates[1])
+      wine.update_attributes(latitude: coordinates[0], longitude: coordinates[1]) if coordinates.present?
     end
   end
 end
