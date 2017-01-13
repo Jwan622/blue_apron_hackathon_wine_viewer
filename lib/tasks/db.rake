@@ -27,6 +27,7 @@ namespace :db do
 
   task geolocate_wine: :environment do
     Wine.find_each do |wine|
+      Geocoder.configure(lookup: :google, api_key: "AIzaSyAOM0HeN0_Ue30RgDH9JTZcu-9IIthP64M", use_https: true)
       coordinates = Geocoder.coordinates(wine.region)
       puts "Updating wine id: #{wine.id}"
       wine.update_attributes(latitude: coordinates[0], longitude: coordinates[1])
