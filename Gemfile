@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
 gem 'pg', '~> 0.15'
@@ -14,6 +13,11 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rack-cors'
+gem 'geocoder'
+gem 'sidekiq'
+gem 'redis'
+gem 'rails_12factor'
+gem 'unicorn'
 
 group :development, :test do
   gem 'pry'
@@ -28,3 +32,5 @@ end
 group :test do
   gem 'rspec-rails'
 end
+
+ruby "2.3.3"
