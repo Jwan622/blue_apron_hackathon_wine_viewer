@@ -50,13 +50,13 @@ puts "creating users"
 
 CSV.foreach("#{Rails.root}/db/user.csv", headers: true) do |row|
   attributes = {}
-  attributes[:user_id] = row['id']
+  attributes[:id] = row['id']
   attributes[:name] = row['name']
   attributes[:address] = row['address']
   attributes[:lat] = row['latitude']
   attributes[:long] = row['longitude']
 
-  puts "creating user with id: #{user_id}"
+  puts "creating user with id: #{attributes[:id]}"
   User.create(attributes)
 end
 
