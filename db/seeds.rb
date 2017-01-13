@@ -49,20 +49,12 @@ end
 puts "creating users"
 
 CSV.foreach("#{Rails.root}/db/user.csv", headers: true) do |row|
-  attributes = {}
-  attributes[:id] = row['id']
-  attributes[:name] = row['name']
-  attributes[:address] = row['address']
+  user_id = row['id']
+  name = row['name']
+  address = row['address']
 
-  User.create(attributes) unless User.where(id: attributes['id']).present?
+  puts "creating user with id: #{user_id}"
+  UserGeneratorWorker.perform_async(user_id, name, address)
 end
 
 puts "creating user wines"
-
-CSV.foreach("#{Rails.root}/db/user_wine.csv", headers: true) do |row|
-  attributes = {}
-  attributes[:user_id] = row['user_id']
-  attributes[:wine_id] = row['wine_id']
-
-  UsersWine.create(attributes)
-end
