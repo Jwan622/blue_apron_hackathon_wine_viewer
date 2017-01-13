@@ -53,8 +53,8 @@ CSV.foreach("#{Rails.root}/db/user.csv", headers: true) do |row|
   attributes[:id] = row['id']
   attributes[:name] = row['name']
   attributes[:address] = row['address']
-  attributes[:lat] = row['latitude']
-  attributes[:long] = row['longitude']
+  attributes[:latitude] = row['latitude']
+  attributes[:longitude] = row['longitude']
 
   puts "creating user with id: #{attributes[:id]}"
   User.create(attributes)
