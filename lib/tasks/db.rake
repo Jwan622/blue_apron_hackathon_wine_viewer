@@ -27,6 +27,7 @@ namespace :db do
 
   task geolocate_wine: :environment do
     Wine.find_each do |wine|
+      puts "updating wine id: #{wine.id}"
       coordinates = if Geocoder.coordinates(wine.region)
         Geocoder.coordinates(wine.region)
       else
