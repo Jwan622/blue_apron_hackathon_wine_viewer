@@ -57,8 +57,10 @@ CSV.foreach("#{Rails.root}/db/user.csv", headers: true) do |row|
   attributes[:longitude] = row['longitude']
 
   puts "creating user with id: #{attributes[:id]}"
-  User.create(attributes)
+  User.create(attributes) unless User.where(id: attributes[:id]).present?
 end
+
+puts "linking wine and users"
 
 CSV.foreach("#{Rails.root}/db/user_wine.csv", headers: true) do |row|
   attributes = {}
